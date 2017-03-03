@@ -73,6 +73,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="COD50001.TXT" />
+    <Content Include="Documentation\Readme.txt" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="TFS2NAVListener.svc" />
     <Content Include="Web.config" />
