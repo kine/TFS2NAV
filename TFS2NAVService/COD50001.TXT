@@ -1,0 +1,31 @@
+OBJECT Codeunit 50001 TFS2NAV Interface
+{
+  OBJECT-PROPERTIES
+  {
+    Date=03.03.17;
+    Time=16:03:48;
+    Modified=Yes;
+    Version List=;
+  }
+  PROPERTIES
+  {
+    OnRun=BEGIN
+          END;
+
+  }
+  CODE
+  {
+
+    PROCEDURE TFS2NAV@50000(data@50000 : Text) : Text;
+    VAR
+      F@50001 : File;
+      OS@50002 : OutStream;
+    BEGIN
+      EXIT('Received:'+data);
+    END;
+
+    BEGIN
+    END.
+  }
+}
+

@@ -25,6 +25,17 @@ namespace Kine.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://develsupp15.navertica.local:7047/Navertica2015/WS/Test%20NAVERTICA%20a.s./" +
+            "Codeunit/TFS2NAV")]
+        public string TFS2NAVService_NAV_TFS2NAV {
+            get {
+                return ((string)(this["TFS2NAVService_NAV_TFS2NAV"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string WSUserName {
             get {
@@ -38,6 +49,24 @@ namespace Kine.Properties {
         public string WSUserPwd {
             get {
                 return ((string)(this["WSUserPwd"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WSUserDomain {
+            get {
+                return ((string)(this["WSUserDomain"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NTLM")]
+        public string WSauthType {
+            get {
+                return ((string)(this["WSauthType"]));
             }
         }
     }

@@ -15,7 +15,7 @@ namespace Kine
     {
 
         [OperationContract]
-        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         string ToNAV(Stream body);
 
     }

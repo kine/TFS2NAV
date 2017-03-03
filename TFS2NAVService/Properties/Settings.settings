@@ -2,11 +2,20 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kine.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="TFS2NAVService_NAV_TFS2NAV" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://develsupp15.navertica.local:7047/Navertica2015/WS/Test%20NAVERTICA%20a.s./Codeunit/TFS2NAV</Value>
+    </Setting>
     <Setting Name="WSUserName" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="WSUserPwd" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WSUserDomain" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WSauthType" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NTLM</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="TFS2NAVService.Service1" CodeBehind="TFS2NAVListener.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Kine.TFS2NAVListener" CodeBehind="TFS2NAVListener.svc.cs" %>

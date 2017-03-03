@@ -2,11 +2,13 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
 
@@ -18,29 +20,52 @@ namespace Kine
     {
         public string ToNAV(Stream body)
         {
-            var reader = new StreamReader(body);
-            //var p = JsonConvert.DeserializeObject<JObject>(reader.ReadToEnd());
-            var p = reader.ReadToEnd();
-            reader.Close();
-            reader.Dispose();
-            
-            string result = PassDataToNAV(p);
+            string p = "";
+            using (var reader = new StreamReader(body))
+            {
+                p = reader.ReadToEnd();
+                reader.Close();
+            }
+            string result = "";
+            result = PassDataToNAV(p);
             return (result);
         }
 
         string PassDataToNAV(string data)
         {
-            var navPort = new NAV.TFS2NAV_PortClient();
+            var tfs2nav = new NAV.TFS2NAV();
             if (!String.IsNullOrEmpty(Kine.Properties.Settings.Default.WSUserName))
             {
-                navPort.ClientCredentials.UserName.Password = Properties.Settings.Default.WSUserPwd;
-                navPort.ClientCredentials.UserName.UserName = Properties.Settings.Default.WSUserName;
-            } else
-            {
-                navPort.ClientCredentials.Windows.ClientCredential = (NetworkCredential)System.Net.CredentialCache.DefaultCredentials;
+                var cred = new CredentialCache();
+                cred.Add(new Uri(tfs2nav.Url), Properties.Settings.Default.WSauthType, 
+                    new NetworkCredential(
+                        Properties.Settings.Default.WSUserName, 
+                        Properties.Settings.Default.WSUserPwd,
+                        (String.IsNullOrEmpty(Properties.Settings.Default.WSUserDomain)?"": Properties.Settings.Default.WSUserDomain)
+                        ));
+                tfs2nav.Credentials = cred;
             }
-            var result = navPort.TFS2NAV(data);
+            else
+            {
+                tfs2nav.UseDefaultCredentials = true;
+            }
+            Debug.WriteLine("Sending:" + data);
+            var result = tfs2nav.CallTFS2NAV(data);
             return (result);
+        }
+    }
+    public class RawContentTypeMapper : WebContentTypeMapper
+    {
+        public override WebContentFormat GetMessageFormatForContentType(string contentType)
+        {
+            if (contentType.Contains("text/json") || contentType.Contains("application/json"))
+            {
+                return WebContentFormat.Raw;
+            }
+            else
+            {
+                return WebContentFormat.Default;
+            }
         }
     }
 }
