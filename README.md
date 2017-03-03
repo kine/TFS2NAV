@@ -16,7 +16,7 @@ In web.config specify the parameters in section applicationSettings, mainly WSUs
 
 # TFS Setup
 
-in TFS create new Service Hook of type Web Hook to address like http://<server>/TFS2NAV/TFS2NAVListener.svc/ToNAV and select which info you want to send to
+in TFS create new Service Hook of type Web Hook to address like http://server/TFS2NAV/TFS2NAVListener.svc/ToNAV and select which info you want to send to
 this hook. The Json with the info will ends in your NAV.
 
 # NAV Web Service
