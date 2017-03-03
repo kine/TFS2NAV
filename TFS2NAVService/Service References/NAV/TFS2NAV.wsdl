@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/TFS2NAV" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/TFS2NAV" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/TFS2NAV" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="TFS2NAV">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="data" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="TFS2NAV_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="TFS2NAV">
+    <part name="parameters" element="tns:TFS2NAV" />
+  </message>
+  <message name="TFS2NAV_Result">
+    <part name="parameters" element="tns:TFS2NAV_Result" />
+  </message>
+  <portType name="TFS2NAV_Port">
+    <operation name="TFS2NAV">
+      <input name="TFS2NAV" message="tns:TFS2NAV" />
+      <output name="TFS2NAV_Result" message="tns:TFS2NAV_Result" />
+    </operation>
+  </portType>
+  <binding name="TFS2NAV_Binding" type="tns:TFS2NAV_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="TFS2NAV">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/TFS2NAV:TFS2NAV" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="TFS2NAV">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="TFS2NAV_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="TFS2NAV">
+    <port name="TFS2NAV_Port" binding="tns:TFS2NAV_Binding">
+      <address location="http://develsupp15.navertica.local:7047/Navertica2015/WS/Test%20NAVERTICA%20a.s./Codeunit/TFS2NAV" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>
